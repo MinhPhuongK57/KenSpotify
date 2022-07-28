@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
-import { Songs } from "../Context";
+import { Songs } from "../../Context";
+import { StyledPlayingSong } from "./StyledPlayingSong";
 
 export default function PlayingSong() {
   const { song, handleSetSong } = useContext(Songs);
@@ -12,7 +13,7 @@ export default function PlayingSong() {
     handleSetSong(song.id - 1);
   };
   return (
-    <div>
+    <StyledPlayingSong>
       <AudioPlayer
         className="player-music"
         src={song.url}
@@ -22,6 +23,6 @@ export default function PlayingSong() {
         onClickNext={handleClickNext}
         onClickPrevious={handleClickPre}
       />
-    </div>
+    </StyledPlayingSong>
   );
 }
